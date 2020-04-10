@@ -1,0 +1,170 @@
+{% extends 'Customerapp/base.html' %}
+{% load static %}
+{% block body_block %}
+<style>
+body {font-family: Verdana, sans-serif; margin:0}
+
+/* Slideshow container */
+.slideshow-container1 {
+  position: absolute;
+  margin: auto;
+  width: 61.9%;
+  height: 93.56%;
+  float: left;
+  top: 65px;
+  border-radius: 1px;
+  background-color: lightblue;
+  border: 0px solid black;
+}
+
+.slideshow-container2 {
+  position: fixed;
+  right: 0;
+  margin: auto;
+  width: 32.7%;
+  height: 93.56%;
+  float: right;
+  top: 65px;
+  border-radius: 1px;
+  background-color: lightblue;
+  border: 0px solid black;
+}
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+</style>
+<div class="slideshow-container1">
+    {% if hotel %}
+    <ul>
+        {% for hotels in hotel %}
+        <div class="mySlides fade">
+        <li><h1>Hotel Details</h1></li>
+        <ul>
+            <li>Hotel Name: {{hotels.hotel_name}}</li>
+            <li>Location: {{hotels.hotel_location}}</li>
+            <li>Rent(Per Hour): Rs {{hotels.room_price}}</li>
+            <li>Smallest slot: {{hotels.min_slot}} Hours</li>
+            <li>Rooms Available: {{hotels.max_rooms}}</li>
+            <li>Booked Before: {{ hotels.before_days}} Days</li>
+        </ul>
+            <br>
+            <button class="button" href="">Book Now!</button>
+        </div>
+        {% endfor %}
+    </ul>
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    {% else %}
+    <h1> Sorry! No Hotel record found.</h1>
+    {% endif %}
+</div>
+<div class="slideshow-container2">
+<div class="mySlides fade">
+</div>
+</div>
+<script>
+    var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+</script>
+{% endblock %}

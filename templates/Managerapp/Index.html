@@ -1,0 +1,97 @@
+{% extends 'Managerapp/base.html' %}
+{% load static %}
+{% block body_block %}
+<style>
+     .center {
+  margin: auto;
+  width: 60%;
+  border: 3px solid #73AD21;
+  padding: 10px;
+
+}
+.center_top{
+ margin: auto;
+  width: 60%;
+  border: 3px solid #73AD21;
+  padding: 10px;
+}
+.w3-container{
+    padding:0.01em 16px;
+   margin: auto;
+  width: 60%;
+  right: 3;
+  border: 3px solid #73AD21;
+  padding: 10px;}
+ .w3-container1{
+ width:96.5%;
+  margin: auto;
+  border: 3px solid #73AD21;
+  padding: 10px;
+ }
+ .w3-container2{
+ background-color: white;
+ width:96.5%;
+  margin: auto;
+  border: 3px solid #73AD21;
+  padding: 10px;
+ }
+.w3-margin{margin:16px!important;}
+.w3-border{border:1px solid #ccc!important;}
+.w3-green{color:#fff!important;background-color:#4CAF50!important;}
+.w3-xlarge{font-size:35px!important}
+.w3-teal{color:#fff!important;background-color:lightred!important}
+.w3-button{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-}
+
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+</style>
+<div class="w3-container">
+  <div class="w3-border">
+    <div class="w3-container1 w3-margin w3-green">
+      <p align="center"><b><font color="purple" size="7">Add New Hotel <a href="{% url 'Hotel_form' %}"><button class="w3-button w3-xlarge w3-teal">+</button></a></font></b></p>
+    </div>
+      <div class="w3-container1 w3-margin w3-green">
+      <h2><font>If you want to edit the details of your previous added Hotels then follow the below link👇👇👇👇👇👇👇👇</font></h2>
+    </div>
+      <div class="w3-container2 w3-margin ">
+          <a href="{% url 'Hotel_list' %}">&nbsp;&nbsp;<button class="button"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Click here go to see your previously added hotels&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></button></a>
+  </div>
+</div>
+{% endblock %}
+

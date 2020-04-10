@@ -1,0 +1,10 @@
+{% extends 'Managerapp/base.html' %}
+{% load static %}
+{% block body_block %}
+<h1>Edit Post</h1>
+<form action="" method="POST">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Edit Post"/>
+</form>
+{% endblock %}

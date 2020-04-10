@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>HOME PAGE</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     <style>
+        body{
+        background-image: url("{% static 'images/background.jpg' %}");
+        background-size: 100%;
+       }
+       h1{
+            font-variant: small-caps;
+            font-style: oblique;
+        }
+        header{
+         background-color: black;
+         padding: 50px 10px;
+         height: 100px;
+         }
+         .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100px;
+            background-color: white;
+            color: dark;
+            text-align: center;
+    </style>
+</head>
+<body>
+<header class= " bg-light p-1">
+     <div class="container bg-dark">
+  <ul class="nav nav-pills justify-content-center nav-fill">
+    <li class="nav-item">
+        <a class="nav-link text-light" href="{% url 'Home' %}"><b>HOME</b></a>
+    </li>
+
+     <li class="nav-item">
+        <a class="nav-link text-light" href="#"></a>
+    </li>
+     <li class="nav-item">
+        <a class="nav-link text-light" href="#"></a>
+    </li>
+    <li class="nav-item">
+        <p><font color="white">Already a User?<a class="nav-link text-light" href="{% url 'Login' %}"><b>LOG IN</b></a></font></p>
+    </li>
+    <li class="nav-item">
+        <p><font color="white">New User?<a class="nav-link text-light" href="{% url 'Signup'%}"><b>SIGN UP</b></a></font></p>
+    </li>
+  </ul>
+</div>
+</header>
+<br><br><br><br><br><br><br><br><br><br>
+<h1 class="text-center text-light">Welcome to the World's largest Residential Center</h1>
+<div class="footer">
+  <li class="nav-item">
+        <a class="nav-link text-grey" href="#"><b>ABOUT US</b></a>
+    </li>
+    <p> For any query mail us at support@help.in
+</div>
+</body>
+</html>

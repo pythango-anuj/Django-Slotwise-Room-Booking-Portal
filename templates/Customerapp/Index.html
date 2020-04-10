@@ -1,0 +1,121 @@
+{% extends 'Customerapp/base.html' %}
+{% load static %}
+{% block body_block %}
+<style>
+body {
+  font-family: Arial;
+  color: white;
+}
+.split {
+  height: 94%;
+  width: 61.9%;
+  position: fixed;
+  z-index: 1;
+  top: 2;
+  overflow-x: hidden;
+  padding-top: 20px;
+  border-radius: 1px;
+  border: 0px solid black;
+}
+.left {
+  left: 0;
+  background-color: lightblue;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.centered img {
+  width: 150px;
+  border-radius: 50%;
+}
+.button {
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 300px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.glow {
+  font-size: 80px;
+  color: #fff;
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}
+.slideshow-container2 {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 32.7%;
+  height: 91.56%;
+  float: right;
+  top: 65px;
+  border-radius: 1px;
+  background-color: lightblue;
+  border: 0px solid black;
+}
+</style>
+<div class="split left">
+
+  <div class="centered">
+    <img src="{% static 'Customerapp/images/hotel-1.jpg'%}" alt="Avatar woman">
+      <h2><font color="black">|Want Your room on Your Price|<br>Come to </font></h2>
+    <h1 class="glow">RESIDENTALL</h1>
+      <h3><font color="black">[World's most rated and satisfying room collection]</font></h3>
+       <a href="{% url 'Booking_page' %}"><button class="button"><span>Book Your Room</span></button></a>
+  </div>
+</div>
+<div class="slideshow-container2">
+<div class="mySlides fade">
+</div>
+</div>
+{% endblock %}
+

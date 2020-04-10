@@ -1,0 +1,231 @@
+{% extends 'Customerapp/base.html' %}
+{% load static %}
+{% block body_block %}
+<style>
+    @import "compass/css3";
+
+@import "compass/reset";
+@import "compass/css3";
+
+/* Colors */
+/* ---------------------------------------- */
+$border: 		 #c6c6c6;
+$border-focus: #9FB1C1;
+$brand-color:  #1b3d4d;
+$booking-green: #bdcc00;
+$asphalt: 		#506982;
+
+*{
+	@include box-sizing(border-box);
+}
+body{
+    background-color: white;
+	text-align: center;
+	font-family: 'Lato', 'sans-serif';
+	font-weight: 400;
+}
+a{
+  text-decoration: none;
+}
+.info-text{
+  text-align: left;
+  width: 100%;
+}
+ form{
+	padding: 2em 10%;
+}
+.form_container{
+position: fixed;
+background-color: lightgrey;
+padding: 0em;
+width: 30%;
+right: 600px;
+top: 90px;
+border-radius: 15px;
+border: 2px solid grey;
+}
+
+.form-group{
+	margin-bottom: 20px;
+}
+h2.heading{
+	font-size: 18px;
+	text-transform: uppercase;
+	font-weight: 300;
+	text-align: left;
+	color: $asphalt;
+	border-bottom: 1px solid $asphalt;
+	padding-bottom: 3px;
+	margin-bottom: 20px;
+}
+
+.controls{
+	text-align: left;
+	position: relative;
+	input[type="text"],
+	input[type="email"],
+  input[type="number"],
+  input[type="date"],
+	input[type="tel"],
+	textarea,
+	button,
+	select{
+		padding: 12px;
+		font-size: 14px;
+		border: 1px solid $border;
+		width: 100%;
+		margin-bottom: 18px;
+		color: #888;
+		font-family: 'Lato', 'sans-serif';
+		font-size: 16px;
+		font-weight: 300;
+		@include border-radius(2px);
+		@include transition(all .3s);
+
+		&:focus, &:hover{
+			outline: none;
+			border-color: $border-focus;
+			+ label{
+				color: $booking-green;
+          cursor: text;
+			}
+		}
+	}
+
+	.fa-sort{
+		position:absolute;
+		right: 10px;
+		top: 17px;
+		color: #999;
+	}
+	select{
+		@include appearance(none);
+		cursor: pointer;
+	}
+	label{
+		position: absolute;
+		left: 8px;
+		top: 12px;
+     width: 60%;
+     color: #999;
+		font-size: 16px;
+		display: inline-block;
+		padding: 4px 10px;
+		font-weight: 400;
+		background-color: rgba(255,255,255,0);
+		@include transition(color .3s, top .3s, background-color .8s);
+     background-color: rgba(255,255,255,1);
+
+    &.active{
+			top: -11px;
+			color: #555;
+      background-color: rgba(255,255,255,1);
+      width: auto;
+		}
+	}
+	textarea{
+		resize: none;
+		height: 200px;
+	}
+}
+
+button{
+  cursor: pointer;
+  background-color: lightblue;
+  color: #fff;
+  padding: 8px 15px;
+  float: left;
+  &:hover{
+    background-color: lighten($brand-color, 5%);
+  }
+}
+
+.clear:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+}
+</style>
+
+<div class="form_container">
+<form action="">
+  <div class="form-group">
+      <h2 class="heading"><u>Customer Details</u></h2>
+    <div class="controls">
+      <label for="name">Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+      <input type="text" id="name" class="floatLabel" name="name">
+    </div><br>
+    <div class="controls">
+      <label for="phone">Phone&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+      <input type="tel" id="phone" class="floatLabel" name="phone">
+    </div><br>
+      <div class="controls">
+            <label for="city">City &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input type="text" id="city" class="floatLabel" name="city">
+      </div><br>
+      <div class="controls">
+          <label for="post-code">PIN Code</label>
+          <input type="text" id="post-code" class="floatLabel" name="post-code">
+      </div><br>
+      <div class="controls">
+        <label for="country">Country&nbsp;&nbsp;</label>
+        <input type="text" id="country" class="floatLabel" name="country">
+      </div>
+  </div>
+
+
+  <div class="form-group">
+      <h2 class="heading"><u>Booking Details</u></h2>
+      <div class="controls">
+            <label for="city">City &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input type="text" id="city" class="floatLabel" name="city">
+      </div><br>
+      <div class="controls">
+        <label for="arrive" class="label-date"><i class="fa fa-calendar"></i>Booking Date</label>
+           <input type="date" id="arrive" class="floatLabel" name="arrive" value="<?php echo date('Y-m-d'); ?>">
+      </div><br>
+        <div class="controls">
+         <label for="appt">Check in time&nbsp;&nbsp;</label>
+            <input type="time" id="appt" name="appt">
+      </div>
+      <div class="controls">
+         <label for="appt">Check out time</label>
+            <input type="time" id="appt" name="appt">
+      </div>
+     </div>
+      <div class="grid">
+        <p class="info-text">Please describe your needs in comment box e.g. Extra beds, children's cots</p>
+        <div class="controls">
+            <label for="comments">Comments</label><br>
+          <textarea name="comments" class="floatLabel" id="comments"></textarea>
+          </div>
+      </div>
+    <button type="submit" value="Submit">Submit</button><br>
+  </div> <!-- /.form-group -->
+    <br>
+</form>
+</div>
+
+<script>
+    (function($){
+	function floatLabel(inputType){
+		$(inputType).each(function(){
+			var $this = $(this);
+			// on focus add cladd active to label
+			$this.focus(function(){
+				$this.next().addClass("active");
+			});
+			//on blur check field and remove class if needed
+			$this.blur(function(){
+				if($this.val() === '' || $this.val() === 'blank'){
+					$this.next().removeClass();
+				}
+			});
+		});
+	}
+	// just add a class of "floatLabel to the input field!"
+	floatLabel(".floatLabel");
+})(jQuery);
+</script>
+{% endblock %}

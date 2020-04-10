@@ -1,0 +1,10 @@
+{% extends 'Authentication/base.html' %}
+{% load static %}
+{% block body_block %}
+<title> LOG IN PAGE </title>
+<form method="post">
+{% csrf_token %}
+{{form.as_p}}
+<input type="submit" value="Log in">
+</form>
+{% endblock %}
