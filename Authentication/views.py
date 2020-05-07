@@ -1,16 +1,23 @@
 from django.shortcuts import render, HttpResponse, redirect
-from . import forms
+from .import models
+from .forms import RegistrationForm
 from django.contrib.auth import login,logout
-from django.contrib.auth.forms import AuthenticationForm
 
 # View for SIGN UP
 def User_signup(request):
-    form = forms.Manager()
+    return render(request,'Authentication/signup.html')
+
+def Register(request):
     if request.method == 'POST':
-        form = forms.Manager(request.POST)
+        form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            user_type=form.cleaned_data.get('user_position')
+            return redirect('Login')
+    else:
+        form = RegistrationForm()
+    return render(request, 'Authentication/signup.html')
+'''def User_signup(request):
+    if request.method == 'POST':
             if(user_type=='Manager'):
                 return redirect('Manager_Index')
             elif(user_type=='Customer'):
@@ -22,9 +29,12 @@ def User_signup(request):
                             "your password can't be too similar to your other personal information.")
     return render(request, 'Authentication/signup.html', {'form': form})
 
-
+'''
 # View for Login
 # REMAINING : Add message to on getting wrong data in login form.
+def User_login(request):
+    pass
+'''
 def User_login(request):
     if request.method=='POST':
         form=AuthenticationForm(data=request.POST)
@@ -40,9 +50,15 @@ def User_login(request):
     else:
         form=AuthenticationForm()
     return render(request,'Authentication/login.html',{'form':form})
+'''
 
+# View for Logout
+def User_logout(request):
+    pass
+'''
 def User_logout(request):
     #user=request.user
     #logout(user)
     return redirect('Home')
 
+'''
