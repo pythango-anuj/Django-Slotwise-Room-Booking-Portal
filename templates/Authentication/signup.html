@@ -45,7 +45,7 @@ html{
 
 .testbox {
   margin: 20px auto;
-  width: 500px;
+  width: 650px;
   height: 795px;
   -webkit-border-radius: 8px/7px;
   -moz-border-radius: 8px/7px;
@@ -114,7 +114,7 @@ hr{
   opacity: 0.3;
 }
 
-input[type=text],input[type=password],input[type=date],input[type=integer]{
+input[type=text],input[type=password],input[type=date],input[type=number],input[type=email],input[type=radio]{
   width: 200px;
   height: 39px;
   -webkit-border-radius: 0px 4px 4px 0px/5px 5px 4px 4px;
@@ -130,29 +130,9 @@ input[type=text],input[type=password],input[type=date],input[type=integer]{
   padding-left: 10px;
 }
 
-input[type=address]{
-  width: 200px;
-  height: 40px;
-  -webkit-border-radius: 0px 4px 4px 0px/5px 5px 4px 4px;
-  -moz-border-radius: 0px 4px 4px 0px/0px 0px 4px 4px;
-  border-radius: 0px 4px 4px 0px/5px 5px 4px 4px;
-  background-color: #fff;
-  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09);
-  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09);
-  box-shadow: 1px 2px 5px rgba(0,0,0,.09);
-  border: solid 1px #cbc9c9;
-  margin-left: -5px;
-  margin-top: 13px;
-  padding-left: 10px;
-}
-
-input[type=password]{
-  margin-bottom: 25px;
-}
-
 #icon {
   display: inline-block;
-  width: 50px;
+  width: 150px;
   background-color: #3a57af;
   padding: 8px 0px 8px 15px;
   margin-left: 15px;
@@ -175,7 +155,7 @@ input[type=password]{
   margin-top: 20px;
 }
 
-a.button {
+input[type=submit] {
   font-size: 14px;
   font-weight: 600;
   color: white;
@@ -184,7 +164,7 @@ a.button {
   display: inline-block;
   float: right;
   text-decoration: none;
-  width: 50px; height: 27px;
+  width: 100px; height: 40px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -207,53 +187,54 @@ a.button:hover {
 </style>
 <title>SIGN UP PAGE</title>
 <div class="testbox">
-  <h1>Registration Form</h1>
-  <form action="{% url 'Register' %}" method="post">
+    <h1><b>Registration Form</b></h1>
+  <form method="POST" id="myform">
+      {% csrf_token %}
       <hr>
-    <div class="accounttype">
-       &emsp;  &emsp;  &emsp;  &emsp;
-      <input type="radio" value="Customer" id="radioOne" name="account" checked/>
-      <label for="radioOne" class="radio" >Customer</label>
-      <input type="radio" value="Manager" id="radioTwo" name="account" >
-      <label for="radioTwo" class="radio">Manager</label>
-    </div>
-  <hr>
+      &emsp;  &emsp;  &emsp;  &emsp;
+      <label id="icon" for="{{ form.user_type.id_for_label }}" class="icon-user" type="dropdown">&emsp;User Type:</label>
+      {{form.user_type}}
+      <hr>
    &emsp;  &emsp;  &emsp;  &emsp;
-  <label id="icon" for="name"><i class="icon-user"></i></label>
-  <input type="text" name="username" id="name" placeholder="Username" required/><br>
+  <label id="icon" for="{{ form.username.id_for_label }}" class="icon-user">&emsp;Username:</label>
+      {{form.username}}
+      <br>
    &emsp;  &emsp;  &emsp; &emsp;
-  <label id="icon" for="name"><i class="icon-user"></i></label>
-  <input type="text" name="first_name" id="name" placeholder="First Name" required/><br>
+  <label id="icon" for="{{ form.first_name.id_for_label }}" class="icon-user">&emsp;First Name:</label>
+      {{form.first_name}}
+      <br>
    &emsp;  &emsp;  &emsp;  &emsp;
-  <label id="icon" for="name"><i class="icon-user"></i></label>
-  <input type="text" name="last_name" id="name" placeholder="Last Name" required/><br>
+  <label id="icon" for="{{ form.last_name.id_for_label }}" class="icon-user">&emsp;Last Name:</label>
+      {{form.last_name}}
+      <br><br>
   &emsp;  &emsp;  &emsp;  &emsp;
-  <label id="icon" for="name"><i class="icon-envelope"></i></label>
-  <input type="text" name="email" id="name" placeholder="Email" required/><br>
+  <label id="icon" for="{{ form.email.id_for_label }}" class="icon-envelope">&emsp;Email:</label>
+      {{form.email}}
+      <br>
    &emsp;  &emsp;  &emsp;  &emsp;
-  <label id="icon" for="name"><i class="icon-shield"></i></label>
-  <input type="text" name="password1" id="name" placeholder=" Enter Password" required/><br>
+  <label id="icon" for="{{ form.password1.id_for_label }}" class="icon-shield">&emsp;Enter Password:</label>
+      {{form.password1}}
+      <br>
    &emsp;  &emsp;  &emsp;  &emsp;
-  <label id="icon" for="name"><i class="icon-shield"></i></label>
-  <input type="text" name="password2" id="name" placeholder="Confirm Password" required/><br><br>
-  <div class="gender">
-     &emsp;  &emsp;
-    <input type="radio" value="Male" id="male" name="gender" checked/>
-    <label for="male" class="radio" >Male</label>
-    <input type="radio" value="Female" id="female" name="gender" />
-    <label for="female" class="radio">Female</label>
-    <input type="radio" value="Other" id="other" name="gender" />
-    <label for="other" class="radio">Other</label>
-    </div>
+  <label id="icon" for="{{ form.password2.id_for_label }}" class="icon-shield">&emsp;Confirm Password:</label>
+      {{form.password2}}
+      <br><br>
+      &emsp;  &emsp;  &emsp;  &emsp;
+  <label id="icon" for="{{ form.gender.id_for_label }}" class="icon-user" >&emsp;Gender:</label>
+      {{form.gender}}
+      <br>
   &emsp;  &emsp;  &emsp;  &emsp;
-  <label id="icon" for="name"><i class="icon-calendar"></i></label>
-  <input type="date" name="DOB" id="name" placeholder="dd/mm/yyyy" required/><br>
+  <label id="icon" for="{{ form.dob.id_for_label }}" class="icon-calendar">&emsp;Date Of Birth:</label>
+      {{form.dob}}
+      <br>
   &emsp;  &emsp;  &emsp;  &emsp;
-  <label id="icon" for="name"><i class="icon-phone"></i></label>
-  <input type="integer" name="DOB" id="name" placeholder="Contact Number" required/><br>
+  <label id="icon" for="{{ form.contact_no.id_for_label }}" class="icon-phone">&emsp;Contact No:</label>
+      {{form.contact_no}}
+      <br>
   &emsp;  &emsp;  &emsp;  &emsp;
-  <label id="icon" for="name"><i class="icon-home"></i></label>
-  <input type="address" name="DOB" id="name" placeholder="Address" required/><br><br>
+  <label id="icon" for="{{ form.address.id_for_label }}" class="icon-home">&emsp;Address:</label>
+      {{form.address}}
+      <br>
    <table>
        <tr>
            <td>
@@ -263,7 +244,7 @@ a.button:hover {
                <p>By clicking Register, you agree on our <a href="#">terms and condition</a>.</p>
            </td>
            <td>
-               <a href="" class="button">Register</a>
+               <a><input type="submit" class="register" value="Register"></a>
            </td>
        </tr>
    </table>
