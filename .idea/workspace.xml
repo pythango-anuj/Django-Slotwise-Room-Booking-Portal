@@ -19,18 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f87de4f4-9a69-4712-a7f9-075ee142f8d3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Authentication/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/Authentication/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Authentication/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Authentication/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Authentication/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Authentication/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Authentication/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Authentication/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Authentication/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Authentication/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Authentication/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Authentication/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Authentication/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
-    </list>
+    <list default="true" id="f87de4f4-9a69-4712-a7f9-075ee142f8d3" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
